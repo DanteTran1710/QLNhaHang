@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="baseLayout" template="/WEB-INF/layout/base.jsp">
+        <put-attribute name="title" value="..." />
+        <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+        <put-attribute name="content" value="base" />
+    </definition>
+    <definition name="index" extends="baseLayout">
+        <put-attribute name="title" value="Trang chu" />
+        <put-attribute name="content" value="/WEB-INF/jsp/index.jsp" />
+    </definition>
+    <definition name="dattiec" extends="baseLayout">
+        <put-attribute name="title" value="Đặt tiệc" />
+        <put-attribute name="content" value="/WEB-INF/jsp/dattiec.jsp" />
+    </definition>
+    <definition name="monan" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý món ăn" />
+        <put-attribute name="content" value="/WEB-INF/jsp/monan.jsp" />
+    </definition>
+    
+    <definition name="baocao" extends="baseLayout">
+        <put-attribute name="title" value="Báo cáo" />
+        <put-attribute name="content" value="/WEB-INF/jsp/baocao.jsp" />
+    </definition>
+    
+        <!-- Definition Login base Layout -->
+    <definition name="loginBaseLayout" template="/WEB-INF/layout/loginBase.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="content" value=""/>
+    </definition>
+    
+    <!-- Definition Login Layout -->
+    <definition name="login" extends="loginBaseLayout">
+        <put-attribute name="title" value="Đăng nhập"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/login.jsp"/>
+    </definition>
+    
+    <!-- Definition Signup Layout -->
+    <definition name="signup" extends="loginBaseLayout">
+        <put-attribute name="title" value="Đăng ký"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/signup.jsp"/>
+    </definition>
+        <!-- Definition Add Employee Layout -->
+    <definition name="addCustomer" extends="baseLayout">
+        <put-attribute name="banner" value=""/>
+        <put-attribute name="title" value="Tạo tài khoản khách hàng"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/addCustomer.jsp"/>
+    </definition>
+    
+        <!-- Definition Admin base Layout -->
+    <definition name="adminBaseLayout" template="/WEB-INF/layout/adminBase.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="navbar" value="/WEB-INF/layout/navbar.jsp"/>
+        <put-attribute name="slide-bar" value="/WEB-INF/layout/slide-bar.jsp"/>
+    </definition>
+    
+    <!-- Definition Dashboard Layout -->
+    <definition name="dashboard" extends="adminBaseLayout">
+        <put-attribute name="title" value="Trang chủ"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/dashboard.jsp"/>
+    </definition>
+    
+        <!-- Definition Browse Employer Layout -->
+    <definition name="addEmployeeAccount" extends="adminBaseLayout">
+        <put-attribute name="title" value="Thêm tài khoản nhân viên mới"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/addEmployeeAccount.jsp"/>
+    </definition>
+    
+    <!-- Definition Browse Employer Layout -->
+    <definition name="addEmployee" extends="adminBaseLayout">
+        <put-attribute name="title" value="Thêm nhân viên mới"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/addEmployee.jsp"/>
+    </definition>
+    
+    <!-- Definition Browse Employer Layout -->
+    <definition name="editEmployee" extends="adminBaseLayout">
+        <put-attribute name="title" value="Sửa thông tin nhân viên"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/editEmployee.jsp"/>
+    </definition>   
+    
+        <!-- Definition Browse Employer Layout -->
+    <definition name="listEmployee" extends="adminBaseLayout">
+        <put-attribute name="title" value="Danh sách nhân viên"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/listEmployee.jsp"/>
+    </definition> 
+    
+        <!-- Definition Browse Employer Layout -->
+    <definition name="addSanhCuoi" extends="adminBaseLayout">
+        <put-attribute name="title" value="Thêm sảnh cưới mới"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/addSanhCuoi.jsp"/>
+    </definition>
+    
+        <!-- Definition Browse Employer Layout -->
+    <definition name="editSanhCuoi" extends="adminBaseLayout">
+        <put-attribute name="title" value="Sửa thông tin sảnh cưới"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/editSanhCuoi.jsp"/>
+    </definition>
+    
+        <!-- Definition Browse Employer Layout -->
+    <definition name="listSanhCuoi" extends="adminBaseLayout">
+        <put-attribute name="title" value="Danh sách các sảnh cưới"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/listSanhCuoi.jsp"/>
+    </definition>
+    
+        <!-- Definition Browse Employer Layout -->
+    <definition name="addDVC" extends="adminBaseLayout">
+        <put-attribute name="title" value="Thêm dịch vụ cưới mới"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/addDVC.jsp"/>
+    </definition>
+    
+        <!-- Definition Browse Employer Layout -->
+    <definition name="editDVC" extends="adminBaseLayout">
+        <put-attribute name="title" value="Chỉnh sửa thông tin dịch vụ cưới"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/editDVC.jsp"/>
+    </definition>
+    
+        <!-- Definition Browse Employer Layout -->
+    <definition name="listDVC" extends="adminBaseLayout">
+        <put-attribute name="title" value="Danh sách các dịch vụ cưới"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/listDVC.jsp"/>
+    </definition>
+</tiles-definitions>
