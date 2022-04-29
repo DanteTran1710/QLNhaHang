@@ -26,7 +26,7 @@
     
     <div class="form-group">
         <label for="loaiSanhTiec">Loại sảnh tiệc</label>
-        <form:select id="loaiSanhTiec" path="maLoaiSanh" cssClass="form-control">
+        <form:select id="loaiSanhTiec" path="maLoaiSanh.idLoaiSanh" cssClass="form-control">
             <c:forEach var="l" items="${loaisanh}">
                 <option value="${l.idLoaiSanh}">${l.tenLoaiSanh}</option>
             </c:forEach>

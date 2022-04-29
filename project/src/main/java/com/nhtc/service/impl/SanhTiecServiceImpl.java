@@ -7,10 +7,13 @@ package com.nhtc.service.impl;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.nhtc.pojos.LoaiSanh;
 import com.nhtc.pojos.SanhTiec;
+import com.nhtc.repository.LoaiSanhRepository;
 import com.nhtc.repository.SanhTiecRepository;
 import com.nhtc.service.SanhTiecService;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,8 @@ public class SanhTiecServiceImpl implements SanhTiecService{
     private Cloudinary cloudinary;
     @Autowired
     private SanhTiecRepository sanhTiecRepository; 
+
+    
     
     @Override
     public List<SanhTiec> getSanhTiecs(String kw, int page) {
@@ -36,7 +41,7 @@ public class SanhTiecServiceImpl implements SanhTiecService{
         try {
             Map r = this.cloudinary.uploader().upload(sanhTiec.getFile().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
             sanhTiec.setAnhSanhTiec((String) r.get("secure_url"));
-
+            sanhTiec.setNgayDatSanh(new Date());
             return this.sanhTiecRepository.addOrUpdate(sanhTiec);
         } catch (IOException ex) {
             System.err.println("==THÊM SẢNH TIỆC==" + ex.getMessage());
@@ -53,6 +58,11 @@ public class SanhTiecServiceImpl implements SanhTiecService{
     @Override
     public SanhTiec getSanhTiecById(int idSanhTiec) {
         return this.sanhTiecRepository.getSanhTiecById(idSanhTiec);
+    }
+
+    @Override
+    public boolean delete(SanhTiec r) {
+        return this.sanhTiecRepository.delete(r);
     }
 
 }

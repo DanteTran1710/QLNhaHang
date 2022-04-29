@@ -16,5 +16,6 @@ public interface DichVuRepository {
     List<DichVu> getDichVus(String kw, int page);
     DichVu getDichVuById(int idSanhTiec);
     long countDichVu();
-    boolean addOrUpdate(DichVu sanhTiec);
+    boolean addOrUpdate(DichVu sanhTiec, int id);
+    boolean delete(DichVu r);
 }

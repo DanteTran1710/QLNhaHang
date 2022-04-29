@@ -13,6 +13,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -31,10 +32,23 @@ public class DichVuRepositoryImpl implements DichVuRepository {
     private LocalSessionFactoryBean sessionFactory;
 
     @Override
-    public boolean addOrUpdate(DichVu dichVu) {
+    public boolean addOrUpdate(DichVu dichVu, int id) {
         Session s = sessionFactory.getObject().getCurrentSession();
         try {
-            s.save(dichVu);
+            if (id == 0) {
+                s.save(dichVu);
+            } else {
+                String query = "UPDATE DichVu SET tenDichVu=:a, bangGia=:b, anhDV=:c, ghiChu:=d"
+                        + " WHERE idDichVu=:id ";
+                Query q = s.createQuery(query);
+                q.setParameter("a", dichVu.getTenDichVu());
+                q.setParameter("b", dichVu.getBangGia());
+                q.setParameter("c", dichVu.getAnhDV());
+                q.setParameter("d", dichVu.getGhiChu());
+                q.setParameter("id", id);
+
+                q.executeUpdate();
+            }
             return true;
         } catch (Exception e) {
             System.err.println("== THÊM DỊCH VỤ THẤT BẠI ==" + e.getMessage());
@@ -72,7 +86,7 @@ public class DichVuRepositoryImpl implements DichVuRepository {
     @Override
     public DichVu getDichVuById(int i) {
         Session s = sessionFactory.getObject().getCurrentSession();
-        return s.get(DichVu.class, i); 
+        return s.get(DichVu.class, i);
     }
 
     @Override
@@ -80,7 +94,19 @@ public class DichVuRepositoryImpl implements DichVuRepository {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         //Truy vấn tên lớp đối tượng
         Query q = session.createQuery("Select Count(*) From DichVu");
-    
-        return Long.parseLong(q.getSingleResult().toString());    }
+
+        return Long.parseLong(q.getSingleResult().toString());
+    }
+
+    @Override
+    public boolean delete(DichVu dichvu) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            session.delete(dichvu);
+            return true;
+        } catch (HibernateException ex) {
+            System.err.println("MESSAGE HERE = " + ex.getMessage());
+        }
+        return false;    }
 
 }

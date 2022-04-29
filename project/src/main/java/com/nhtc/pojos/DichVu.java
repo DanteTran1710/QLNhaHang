@@ -6,18 +6,15 @@
 package com.nhtc.pojos;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Transient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -25,25 +22,21 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "dich_vu")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "DichVu.findAll", query = "SELECT d FROM DichVu d"),
-    @NamedQuery(name = "DichVu.findByIdDichVu", query = "SELECT d FROM DichVu d WHERE d.idDichVu = :idDichVu"),
-    @NamedQuery(name = "DichVu.findByTenDichVu", query = "SELECT d FROM DichVu d WHERE d.tenDichVu = :tenDichVu")})
 public class DichVu implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idDichVu")
     private Integer idDichVu;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
     @Column(name = "tenDichVu")
     private String tenDichVu;
+    private BigDecimal bangGia;
+    private String anhDV;
+    private String ghiChu;
+    
+    @Transient
+    private  MultipartFile file;
 
     public DichVu() {
     }
@@ -96,6 +89,62 @@ public class DichVu implements Serializable {
     @Override
     public String toString() {
         return "com.nhtc.pojos.DichVu[ idDichVu=" + idDichVu + " ]";
+    }
+
+    /**
+     * @return the bangGia
+     */
+    public BigDecimal getBangGia() {
+        return bangGia;
+    }
+
+    /**
+     * @param bangGia the bangGia to set
+     */
+    public void setBangGia(BigDecimal bangGia) {
+        this.bangGia = bangGia;
+    }
+
+    /**
+     * @return the anhDV
+     */
+    public String getAnhDV() {
+        return anhDV;
+    }
+
+    /**
+     * @param anhDV the anhDV to set
+     */
+    public void setAnhDV(String anhDV) {
+        this.anhDV = anhDV;
+    }
+
+    /**
+     * @return the ghiChu
+     */
+    public String getGhiChu() {
+        return ghiChu;
+    }
+
+    /**
+     * @param ghiChu the ghiChu to set
+     */
+    public void setGhiChu(String ghiChu) {
+        this.ghiChu = ghiChu;
+    }
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
     
 }

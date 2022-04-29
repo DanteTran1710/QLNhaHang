@@ -17,4 +17,5 @@ public interface SanhTiecRepository {
     SanhTiec getSanhTiecById(int idSanhTiec);
     long countSanhTiec();
     boolean addOrUpdate(SanhTiec sanhTiec);
+    boolean delete(SanhTiec r);
 }

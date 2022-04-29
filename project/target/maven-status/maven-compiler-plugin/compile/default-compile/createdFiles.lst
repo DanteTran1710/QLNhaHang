@@ -1,6 +1,7 @@
 com\nhtc\service\impl\MonAnServiceImpl.class
 com\nhtc\service\KhachHangService.class
 com\nhtc\repository\impl\DichVuRepositoryImpl.class
+com\nhtc\controllers\ApiController.class
 com\nhtc\service\DichVuService.class
 com\nhtc\pojos\NhanVien.class
 com\nhtc\service\impl\LoaiMonServiceImpl.class

@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class DichVuController {
         @Autowired
-    private DichVuService dichVuService;
+        private DichVuService dichVuService;
     
     @GetMapping("/admin/newdvc")
     public String listDV(Model model) {
@@ -38,7 +38,7 @@ public class DichVuController {
             @ModelAttribute(value = "dichVu") DichVu dv) {
         String errorMessage;
 
-        if (this.dichVuService.addOrUpdate(dv) == true) {
+        if (this.dichVuService.addOrUpdate(dv,0) == true) {
             return "redirect:/admin";
         } else {
             errorMessage = "Hệ thống hiện đang lỗi! Vui lòng thử lại sau";
@@ -60,7 +60,7 @@ public class DichVuController {
     public String editSanhTiecView(Model model,
             @PathVariable(value = "idDV") int idDV) {
 
-        model.addAttribute("dichVu",
+        model.addAttribute("dv",
                 this.dichVuService.getDichVuById(idDV));
 
         return "editDVC";
@@ -68,10 +68,11 @@ public class DichVuController {
 
     @PostMapping(path = "/admin/listdichvu/{idDV}")
     public String editSanhTiec(Model model,
-            @ModelAttribute(value = "idDV") DichVu e) {
+            @ModelAttribute(value = "dv") DichVu e,
+            @PathVariable(value = "idDV") int idDV) {
         String message;
 
-        if (this.dichVuService.addOrUpdate(e)) {
+        if (this.dichVuService.addOrUpdate(e, idDV)) {
             return "redirect:/admin";
         } else {
             message = "Hệ thống hiện đang lỗi! Vui lòng thử lại sau";

@@ -57,7 +57,7 @@ public class MonAnRepositoryImpl implements MonAnRepository{
     public boolean addOrUpdate(MonAn monan) {
         Session s = sessionFactory.getObject().getCurrentSession();
         try {
-            s.save(monan);
+            s.saveOrUpdate(monan);
             return  true;
         } catch (Exception e) {
             System.err.println("== THÊM MÓN ĂN THẤT BẠI ==" + e.getMessage());

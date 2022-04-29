@@ -44,7 +44,11 @@ public class LoaiSanh implements Serializable {
     @Size(max = 45)
     @Column(name = "tenLoaiSanh")
     private String tenLoaiSanh;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "maLoaiSanh")
+    @OneToMany(
+            fetch = FetchType.EAGER,
+            cascade =  CascadeType.REMOVE,
+            orphanRemoval = true,
+            mappedBy = "maLoaiSanh")
     private Collection<SanhTiec> sanhTiecCollection;
 
     public LoaiSanh() {

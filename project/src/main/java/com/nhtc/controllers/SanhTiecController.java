@@ -50,7 +50,7 @@ public class SanhTiecController {
         }
         model.addAttribute("errMsg", errorMessage);
 
-        return "listSanhCuoi";
+        return "addSanhCuoi";
     }
 
     @GetMapping("/admin/listsanhtiec")

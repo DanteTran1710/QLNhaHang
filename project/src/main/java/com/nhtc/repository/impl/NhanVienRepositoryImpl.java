@@ -48,7 +48,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     public boolean addorUpdateNhanVien(NhanVien nv) {
         Session s = sessionFactory.getObject().getCurrentSession();
         try {
-            s.save(nv);
+            s.saveOrUpdate(nv);
             return true;
         } catch (Exception e) {
             System.err.println("== THÊM DỊCH VỤ THẤT BẠI ==" + e.getMessage());

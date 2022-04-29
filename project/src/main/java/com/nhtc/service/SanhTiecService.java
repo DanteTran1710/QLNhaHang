@@ -13,8 +13,15 @@ import java.util.List;
  * @author ACER
  */
 public interface SanhTiecService {
+
     List<SanhTiec> getSanhTiecs(String kw, int page);
+
     SanhTiec getSanhTiecById(int idSanhTiec);
+
     long countSanhTiec();
+
     boolean addOrUpdate(SanhTiec idSanhTiec);
+
+    boolean delete(SanhTiec r);
+
 }

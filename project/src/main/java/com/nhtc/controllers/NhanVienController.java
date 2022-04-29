@@ -98,7 +98,7 @@ public class NhanVienController {
 
     @PostMapping(path = "/admin/listnv/{idNV}")
     public String editSanhTiec(Model model,
-            @ModelAttribute(value = "idNV") NhanVien e) {
+            @ModelAttribute(value = "nhanVien") NhanVien e) {
         String message;
 
         if (this.nhanVienService.addorUpdateNhanVien(e, "")) {

@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,22 +38,19 @@ public class SanhTiec implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
     @Column(name = "idSanhTiec")
     private Integer idSanhTiec;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
     @Column(name = "tenSanhTiec")
     private String tenSanhTiec;
     @Column(name = "ngayDatSanh")
     @Temporal(TemporalType.DATE)
     private Date ngayDatSanh;
-    @Size(max = 255)
     @Column(name = "anhSanhTiec")
     private String anhSanhTiec;
-    @JoinColumn(name = "loaiSanh", referencedColumnName = "idLoaiSanh")
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "idLoaiSanh")
+    @ManyToOne(          
+            optional = true,
+            fetch = FetchType.EAGER)
     private LoaiSanh maLoaiSanh;
     
     @Transient
