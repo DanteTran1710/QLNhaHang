@@ -80,8 +80,11 @@ public class NhanVienController {
     
     
     @GetMapping("/admin/listnv")
-    public String listST(Model model) {
-        model.addAttribute("nhanViens", this.nhanVienService.getNhanVien());
+    public String listST(Model model,
+            @RequestParam(required = false) Map<String, String> params) {
+        String kw = params.getOrDefault("kw", null);
+        model.addAttribute("nhanViens", this.nhanVienService.getNhanVien(kw,1));
+        model.addAttribute("counter",this.nhanVienService.getNhanVien(kw,1).size());
 
         return "listEmployee";
     }

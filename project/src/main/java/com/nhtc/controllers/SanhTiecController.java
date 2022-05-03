@@ -58,6 +58,7 @@ public class SanhTiecController {
             @RequestParam(required = false) Map<String, String> params) {
         String kw = params.getOrDefault("kw", null);
         model.addAttribute("sanhTiecs", this.sanhTiecService.getSanhTiecs(kw, 1));
+        model.addAttribute("counter", this.sanhTiecService.getSanhTiecs(kw, 1).size());
 
         return "listSanhCuoi";
     }

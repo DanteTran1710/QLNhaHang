@@ -52,6 +52,8 @@ public class DichVuController {
             @RequestParam(required = false) Map<String, String> params) {
         String kw = params.getOrDefault("kw", null);
         model.addAttribute("dichVus", this.dichVuService.getDichVus(kw, 1));
+        
+        model.addAttribute("counter",  this.dichVuService.getDichVus(kw, 1).size());
 
         return "listDVC";
     }

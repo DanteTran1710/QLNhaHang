@@ -27,8 +27,8 @@ public class NhanVienServiceImpl implements NhanVienService{
     private TaiKhoanRepository taiKhoanRepository;
     
     @Override
-    public List<NhanVien> getNhanVien() {
-        return this.nhanVienRepository.getNhanVien();
+    public List<NhanVien> getNhanVien(String kw, int page) {
+        return this.nhanVienRepository.getNhanVien(kw,page);
     }
 
     @Override

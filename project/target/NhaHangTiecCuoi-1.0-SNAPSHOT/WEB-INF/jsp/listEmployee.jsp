@@ -10,11 +10,22 @@
 
 <h1 class="text-center text-danger">Danh sách các sảnh cưới của nhà hàng</h1>
 
+<!-- SEARCH SECTION -->
 <div class="container">
-    <div class="col-md-7">
-        <div class="card " style="height: 600px; width: 700px">
-            <div class="card-body ">
-                <div class="ct-chart">
+    <form action="">
+        <div class="search input-group mb-3">
+            <input type="text" name="kw" class="form-control" placeholder="Search">
+            <div class="input-group-append">
+                <button class="btn-search" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container">
+    <div class="card " style="height: 600px">
+        <div class="card-body ">
+            <div class="ct-chart">
+                <c:if test="${counter == 0}">
                     <table id="chartTable" class="table">
                         <tr>
                             <th></th>
@@ -45,9 +56,18 @@
                                 </td>
                             </tr>
                         </c:forEach>
-
                     </table>
-                </div>
+                </c:if>
+                <c:if test="${counter == 0}">
+                    <div class="container">
+                        <div class="empty-result">
+                            <i class="fa fa-times fa-5x pt-3" aria-hidden="true"></i>
+                            <p>
+                                We have not found jobs for this search at the moment
+                            </p>
+                        </div>
+                    </div>
+                </c:if>
             </div>
         </div>
     </div>

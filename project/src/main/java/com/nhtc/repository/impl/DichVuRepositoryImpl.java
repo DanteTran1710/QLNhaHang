@@ -68,7 +68,10 @@ public class DichVuRepositoryImpl implements DichVuRepository {
 
         if (kw != null) {
             Predicate p = builder.like(root.get("tenDichVu").as(String.class), String.format("%%%s%%", kw));
-            q = q.where(p);
+            Predicate p1 = builder.like(root.get("bangGia").as(String.class), String.format("%%%s%%", kw));
+            Predicate p2 = builder.like(root.get("ghiChu").as(String.class), String.format("%%%s%%", kw));
+
+            q = q.where(builder.or(p,p1,p2));
         }
 
         q = q.orderBy(builder.desc(root.get("idDichVu")));

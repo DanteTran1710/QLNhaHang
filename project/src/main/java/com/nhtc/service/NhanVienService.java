@@ -13,7 +13,7 @@ import java.util.List;
  * @author USER
  */
 public interface NhanVienService {
-    List<NhanVien> getNhanVien();
+    List<NhanVien> getNhanVien(String kw, int page);
     boolean addorUpdateNhanVien(NhanVien nv, String un);
     NhanVien getNhanVienById(int idSanhTiec);
 }
