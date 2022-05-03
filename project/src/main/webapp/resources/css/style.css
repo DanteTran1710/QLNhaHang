@@ -15200,5 +15200,25 @@ disabled look for disabled choices in the results dropdown
 	}
 }
 
+@media (min-width: 1200px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 90%;
+    }
+}
 
+.navbar-nav .nav-item{
+    margin: 4px 61px;
+}
 
+.container .navbar{
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+}
+
+.container .pagination.justify-content-center{
+    margin-top: 50px;
+}
+
+.btn-success{
+     border-radius: 5px;
+}

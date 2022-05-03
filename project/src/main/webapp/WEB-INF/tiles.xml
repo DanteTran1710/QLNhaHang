@@ -7,6 +7,7 @@ and open the template in the editor.
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" 
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+    <!-- ======================== CUSTOMER ========================= -->
     <definition name="baseLayout" template="/WEB-INF/layout/base.jsp">
         <put-attribute name="title" value="..." />
         <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
@@ -24,14 +25,22 @@ and open the template in the editor.
     <definition name="monan" extends="baseLayout">
         <put-attribute name="title" value="Quản lý món ăn" />
         <put-attribute name="content" value="/WEB-INF/jsp/monan.jsp" />
-    </definition>
-    
+    </definition>  
     <definition name="baocao" extends="baseLayout">
         <put-attribute name="title" value="Báo cáo" />
         <put-attribute name="content" value="/WEB-INF/jsp/baocao.jsp" />
     </definition>
+    <definition name="sanhtiec" extends="baseLayout">
+        <put-attribute name="title" value="Sảnh" />
+        <put-attribute name="content" value="/WEB-INF/jsp/sanhtiec.jsp" />
+    </definition>
+    <definition name="thucdon" extends="baseLayout">
+        <put-attribute name="title" value="Thực đơn" />
+        <put-attribute name="content" value="/WEB-INF/jsp/thucdon.jsp" />
+    </definition>
     
-        <!-- Definition Login base Layout -->
+    <!-- ======================== LOGIN ========================= -->
+    <!-- Definition Login base Layout -->
     <definition name="loginBaseLayout" template="/WEB-INF/layout/loginBase.jsp">
         <put-attribute name="title" value=""/>
         <put-attribute name="content" value=""/>
@@ -55,7 +64,10 @@ and open the template in the editor.
         <put-attribute name="content" value="/WEB-INF/jsp/addCustomer.jsp"/>
     </definition>
     
-        <!-- Definition Admin base Layout -->
+    
+    
+    <!-- ======================== ADMIN ========================= -->
+    <!-- Definition Admin base Layout -->
     <definition name="adminBaseLayout" template="/WEB-INF/layout/adminBase.jsp">
         <put-attribute name="title" value=""/>
         <put-attribute name="content" value=""/>

@@ -7,13 +7,13 @@
     <li class="nav-item active">
         <a class="nav-link" href="<c:url value="/" />">Trang chủ</a>
     </li>
-    <!-- Dropdown Sảnh -->
+    <!-- Dropdown Sảnh Tiệc-->
     <li class="nav-item">
-        <a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown">Sảnh</a>
+        <a class="nav-link" href="<c:url value="/sanhtiec"/>">Sảnh</a>
     </li>
     <!-- Dropdown Thực Đơn -->
     <li class="nav-item ">
-        <a class="nav-link " href="#" id="navbardrop" data-toggle="dropdown">Thực đơn</a>
+        <a class="nav-link " href="<c:url value="/thucdon"/>">Thực đơn</a>
     </li>
     <!-- Dropdown Dịch Vụ -->
     <li class="nav-item ">
@@ -35,12 +35,12 @@
         <a class="nav-link" href="<c:url value="/login"/>">Đăng nhập</a>
     </li>
     <!-- Tìm kiếm -->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<!--    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="search">
         <form class="form-inline" action="<c:url value="/"/>">
           <input class="form-control mr-sm-2" name="kw"  type="text" placeholder="Nhập từ khóa">
           <button class="btn btn-success" type="submit">Tìm Kiếm</button>
         </form>
-    </nav>
+    </nav>-->
    
   </ul>
 </nav>

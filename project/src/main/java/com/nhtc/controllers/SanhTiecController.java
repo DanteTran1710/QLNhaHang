@@ -5,6 +5,7 @@
  */
 package com.nhtc.controllers;
 
+import com.nhtc.pojos.LoaiSanh;
 import com.nhtc.pojos.SanhTiec;
 import com.nhtc.service.LoaiSanhService;
 import com.nhtc.service.SanhTiecService;
@@ -88,4 +89,23 @@ public class SanhTiecController {
 
         return "editSanhCuoi";
     }
+    
+    @GetMapping(path="/sanhtiec")
+    public String sanhTiec(Model model, 
+            @RequestParam(required = false) Map<String, String> params){
+        String kw = params.getOrDefault("kw", null);
+        int page = Integer.parseInt(params.getOrDefault("page", "1"));
+        
+        String idLoaiSanh = params.get("idLoaiSanh");
+        if (idLoaiSanh == null) {
+            model.addAttribute("sanhtiec", this.sanhTiecService.getSanhTiecs(kw, page));
+        } else {
+            LoaiSanh l = this.loaiSanhService.getLoaiSanhById(Integer.parseInt(idLoaiSanh)); 
+            model.addAttribute("sanhtiec", l.getSanhTiecCollection());
+        }
+        
+        model.addAttribute("sanhTiecCounter", this.sanhTiecService.countSanhTiec());
+        return "sanhtiec";
+    }
+    
 }
