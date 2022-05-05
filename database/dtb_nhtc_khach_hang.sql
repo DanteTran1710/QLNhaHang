@@ -30,7 +30,7 @@ CREATE TABLE `khach_hang` (
   `diaChiKH` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `gioiTinhKH` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `idTaiKhoan` int DEFAULT NULL,
-  `avatar` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `avatar` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idKhachHang`),
   KEY `fk_khachhang_taikhoan_idx` (`idTaiKhoan`),
   CONSTRAINT `fk_khachhang_taikhoan` FOREIGN KEY (`idTaiKhoan`) REFERENCES `tai_khoan` (`idTaiKhoan`)
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-18 16:11:06
+-- Dump completed on 2022-05-05 15:48:55

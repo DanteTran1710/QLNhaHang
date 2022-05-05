@@ -30,7 +30,7 @@ CREATE TABLE `bao_cao` (
   PRIMARY KEY (`idBaoCao`),
   KEY `fk_baocao_khachhang_idx` (`idKhachHang`),
   CONSTRAINT `fk_baocao_khachhang` FOREIGN KEY (`idKhachHang`) REFERENCES `khach_hang` (`idKhachHang`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `bao_cao` (
 
 LOCK TABLES `bao_cao` WRITE;
 /*!40000 ALTER TABLE `bao_cao` DISABLE KEYS */;
-INSERT INTO `bao_cao` VALUES (1,'Nhân viên','Phục vụ quá tệ',1),(2,'Tổ chức sự kiện','sdsdsd',3);
+INSERT INTO `bao_cao` VALUES (1,'Nhân viên','Phục vụ quá tệ',1),(2,'Tổ chức sự kiện','sdsdsd',3),(3,'Tổ chức sự kiện','sdsds',NULL);
 /*!40000 ALTER TABLE `bao_cao` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-18 16:11:04
+-- Dump completed on 2022-05-05 15:48:57

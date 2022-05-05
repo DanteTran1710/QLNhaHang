@@ -224,3 +224,103 @@ function deleteSanhTiec(id) {
         })
     }
 }
+
+// CHART STATISTIC
+function generateColor() {
+    let r = parseInt(Math.random() * 255);
+    let g = parseInt(Math.random() * 255);
+    let b = parseInt(Math.random() * 255);
+
+    return `rgb(${r},${g},${b})`;
+}
+
+function cvChart(cvLabels = [], cvInfo = []) {
+    let colors = [];
+
+    for (let i = 0; i < cvInfo.length; i++)
+        colors.push(generateColor());
+
+    const data = {
+        labels: cvLabels,
+        datasets: [{
+                label: 'Doughnut Chart For Ordered-Wedding Statistic',
+                data: cvInfo,
+                backgroundColor: colors,
+                hoverOffset: 4
+            }]
+    };
+
+    const config = {
+        type: 'doughnut',
+        data: data
+    };
+
+    let ctx = document.getElementById("doughnutchart").getContext("2d");
+    new Chart(ctx, config);
+}
+
+function sendCondition() {
+    let sM = document.getElementsByName("rdbM");
+    let sY = document.getElementsByName("rdbY");
+    let sS = document.getElementsByName("rdbS");
+
+    var year = null;
+    var period = null;
+    var month = null;
+
+    for (var i = 0; i < sY.length; i++) {
+        if (sY[i].checked == true)
+            year = sY[i].value;
+    }
+
+    for (var i = 0; i < sS.length; i++) {
+        if (sS[i].checked == true)
+            period = sS[i].value;
+    }
+    for (var i = 0; i < sM.length; i++) {
+        if (sM[i].checked == true)
+            month = sM[i].value;
+    }
+    if (month != null && year != null || month != null && period != null) {
+        alert("CANT CHOOSE YEAR AND MONTH OR PERIOD AT THE SAME TIME");
+    } else {
+        getCVStatistic(month, year, period);
+    }
+}
+function getCVStatistic(month, year, period) {
+    event.preventDefault();
+
+    fetch("/NhaHangTiecCuoi/api/tieccuoi-statis", {
+        method: 'post',
+        body: JSON.stringify({
+            "period": period,
+            "year": year,
+            "month": month
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (res) {
+
+        return res.json();
+    }).then(function (data) {
+
+        let area = document.getElementById("chartTable");
+        let section = document.getElementById("doughnutchart");
+        let cvLabels = [], cvInfo = [];
+
+        data.forEach(i => {
+            area.innerHTML += `
+                                   <tr>
+                                        <td>${i[0]}</td>
+                                        <td>${i[1]}</td>                                        
+                                    </tr>
+                            `;
+            cvLabels.push(i[0]);
+            cvInfo.push(i[1]);
+            
+        });
+
+        cvChart(cvLabels, cvInfo);
+    });
+}

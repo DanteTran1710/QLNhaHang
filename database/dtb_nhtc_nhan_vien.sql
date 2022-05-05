@@ -33,7 +33,7 @@ CREATE TABLE `nhan_vien` (
   PRIMARY KEY (`idNhanVien`),
   KEY `fk_nhanvien_taikhoan_idx` (`idTKNV`),
   CONSTRAINT `fk_nhanvien_taikhoan` FOREIGN KEY (`idTKNV`) REFERENCES `tai_khoan` (`idTaiKhoan`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `nhan_vien` (
 
 LOCK TABLES `nhan_vien` WRITE;
 /*!40000 ALTER TABLE `nhan_vien` DISABLE KEYS */;
-INSERT INTO `nhan_vien` VALUES (1,'Thanh','0984381617','1851010125thanh@ou.edu.vn','264 PVH','Nam',11),(2,'Thanh','0984381617','1851010125thanh@ou.edu.vn','264 PVH','Nam',NULL);
+INSERT INTO `nhan_vien` VALUES (1,'Thanh','0984381617','1851010125thanh@ou.edu.vn','264 PVH','Nam',11),(2,'Thanh','0984381617','1851010125thanh@ou.edu.vn','264 PVH','Nam',NULL),(3,'Thanh','0984381617','1851010125thanh@ou.edu.vn','264 PVH P5 Tan Binh TPHCM','Nam',NULL);
 /*!40000 ALTER TABLE `nhan_vien` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-18 16:11:05
+-- Dump completed on 2022-05-05 15:48:56

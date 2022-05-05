@@ -9,9 +9,11 @@ com\nhtc\service\impl\NhanVienServiceImpl.class
 com\nhtc\repository\BaoCaoRepository.class
 com\nhtc\service\MonAnService.class
 com\nhtc\controllers\MonAnController.class
+com\nhtc\pojos\HoaDon.class
 com\nhtc\repository\NhanVienRepository.class
 com\nhtc\repository\impl\KhachHangRepositoryImpl.class
 com\nhtc\pojos\TaiKhoan_.class
+com\nhtc\pojos\HoaDon_.class
 com\nhtc\pojos\MonAn.class
 com\nhtc\repository\impl\MonAnRepositoryImpl.class
 com\nhtc\repository\TaiKhoanRepository.class
@@ -29,6 +31,8 @@ com\nhtc\pojos\LoaiSanh_.class
 com\nhtc\repository\impl\SanhTiecRepositoryImpl.class
 com\nhtc\service\LoaiMonService.class
 com\nhtc\configs\WebApplicationContextConfig.class
+com\nhtc\repository\HoaDonRepository.class
+com\nhtc\service\impl\HoaDonServiceImpl.class
 com\nhtc\service\impl\LoaiSanhServiceImpl.class
 com\nhtc\repository\impl\NhanVienRepositoryImpl.class
 com\nhtc\controllers\KhachHangController.class
@@ -46,6 +50,7 @@ com\nhtc\controllers\TaiKhoanController.class
 com\nhtc\service\impl\TaiKhoanServiceImpl.class
 com\nhtc\service\impl\BaoCaoServiceImpl.class
 com\nhtc\controllers\SanhTiecController.class
+com\nhtc\service\HoaDonService.class
 com\nhtc\configs\SpringSecurityConfig.class
 com\nhtc\configs\HibernateConfig.class
 com\nhtc\pojos\DichVu_.class
@@ -63,6 +68,7 @@ com\nhtc\pojos\KhachHang_.class
 com\nhtc\repository\DichVuRepository.class
 com\nhtc\configs\SecurityWebApplicationInitializer.class
 com\nhtc\service\NhanVienService.class
+com\nhtc\repository\impl\HoaDonRepositoryImpl.class
 com\nhtc\controllers\NhanVienController.class
 com\nhtc\pojos\LoaiSanh.class
 com\nhtc\service\TaiKhoanService.class

@@ -24,14 +24,14 @@ DROP TABLE IF EXISTS `sanh_tiec`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sanh_tiec` (
   `idSanhTiec` int NOT NULL AUTO_INCREMENT,
-  `tenSanhTiec` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `loaiSanh` int NOT NULL,
+  `tenSanhTiec` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `idLoaiSanh` int DEFAULT NULL,
   `ngayDatSanh` date DEFAULT NULL,
-  `anhSanhTiec` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `anhSanhTiec` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idSanhTiec`),
-  KEY `fk_sanhtiec_loaisanh_idx` (`loaiSanh`),
-  CONSTRAINT `fk_sanhtiec_loaisanh` FOREIGN KEY (`loaiSanh`) REFERENCES `loai_sanh` (`idLoaiSanh`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+  KEY `fk_sanhtiec_loaisanh_idx` (`idLoaiSanh`),
+  CONSTRAINT `fk_sanhtiec_loaisanh` FOREIGN KEY (`idLoaiSanh`) REFERENCES `loai_sanh` (`idLoaiSanh`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `sanh_tiec` (
 
 LOCK TABLES `sanh_tiec` WRITE;
 /*!40000 ALTER TABLE `sanh_tiec` DISABLE KEYS */;
-INSERT INTO `sanh_tiec` VALUES (1,'Sảnh họp số 1',1,NULL,NULL),(2,'Tiệc thôi nôi Số 100 tuổi',1,NULL,'https://res.cloudinary.com/dguzlcoru/image/upload/v1644934613/wxkdvwpoelbi3zsqr5wl.jpg');
+INSERT INTO `sanh_tiec` VALUES (2,'Tiệc thôi nôi Số 100 tuổi',1,'2020-10-20','https://res.cloudinary.com/dguzlcoru/image/upload/v1644934613/wxkdvwpoelbi3zsqr5wl.jpg'),(3,'Tiệc thôi nôi Mimi',2,'2021-04-29','https://res.cloudinary.com/dguzlcoru/image/upload/v1651204350/kalxvv6nizq0ylpib4sa.jpg'),(4,'Tiệc thôi nôi của Sữa',1,'2022-04-20','https://res.cloudinary.com/dguzlcoru/image/upload/v1651165983/sbuejyyvyaj1mao2pinw.jpg'),(5,'Tiệc thôi nôi của Sữa',2,'2022-04-29','https://res.cloudinary.com/dguzlcoru/image/upload/v1651216900/dvl4z2jxejqzszqq6wrs.jpg');
 /*!40000 ALTER TABLE `sanh_tiec` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-18 16:11:04
+-- Dump completed on 2022-05-05 15:48:57

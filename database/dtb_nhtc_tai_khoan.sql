@@ -28,7 +28,7 @@ CREATE TABLE `tai_khoan` (
   `matKhau` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `loaiTaiKhoan` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idTaiKhoan`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `tai_khoan` (
 
 LOCK TABLES `tai_khoan` WRITE;
 /*!40000 ALTER TABLE `tai_khoan` DISABLE KEYS */;
-INSERT INTO `tai_khoan` VALUES (1,'admin','$2a$10$.DGYaqU7i67ci/d1BLC5VepUKTI1d3g1k4LFiGoNXRJtOrYNEQd9q','người dùng'),(2,'thanh','$2a$10$tRgY2jFm3GR8NBFp9pWnn.o7xoTivIEjiszFCwHrqJPAPbjkrBiNS','người dùng'),(3,'ngan','$2a$10$82c2QgZqzepnc08pzPivZOafIX/tSCbwbEmb0ywOu.84yLMUiJ5QS','khách hàng'),(9,'nv1','$2a$10$jX4g.YmnnI/s.XlK1kBs3uNPMgHhBjHEaTHVg1XXLx7P4/.rXSGX6','người dùng'),(10,'nv3','$2a$10$JPkxYZnpdrq5QRPCNWlU7uPrArxIitiCA3aq5mRjtKbtHWU9TZ5Bi','ROLE_ADMIN'),(11,'nv2','$2a$10$L6/AX4ccZ7hsQFCa0D7SQOXxhnuuEpifHugZJiXSHy2Bv71mtcQQ6','nhân viên');
+INSERT INTO `tai_khoan` VALUES (1,'admin','$2a$10$.DGYaqU7i67ci/d1BLC5VepUKTI1d3g1k4LFiGoNXRJtOrYNEQd9q','người dùng'),(2,'thanh','$2a$10$tRgY2jFm3GR8NBFp9pWnn.o7xoTivIEjiszFCwHrqJPAPbjkrBiNS','người dùng'),(3,'ngan','$2a$10$82c2QgZqzepnc08pzPivZOafIX/tSCbwbEmb0ywOu.84yLMUiJ5QS','khách hàng'),(9,'nv1','$2a$10$jX4g.YmnnI/s.XlK1kBs3uNPMgHhBjHEaTHVg1XXLx7P4/.rXSGX6','người dùng'),(10,'nv3','$2a$10$JPkxYZnpdrq5QRPCNWlU7uPrArxIitiCA3aq5mRjtKbtHWU9TZ5Bi','ROLE_ADMIN'),(11,'nv2','$2a$10$L6/AX4ccZ7hsQFCa0D7SQOXxhnuuEpifHugZJiXSHy2Bv71mtcQQ6','nhân viên'),(12,'thanh','$2a$10$fXlNLYU0vUGiQgVwz0gD9eQk.PPwdN/ZvtYlR42yYy4xiKsXMkEa2','người dùng'),(13,'kh1','$2a$10$DVw/qMS420a2gzVs29T0ouF/ZNDM8aJ3zqg.o2cKWfzCb.9.NHvva','người dùng'),(14,'kh2','$2a$10$fbTtTRqrR2Dy.FeTBaZ5KeoK8OqCDofoQ2UHMHVrU2rAvyhTRynBm','ROLE_ADMIN');
 /*!40000 ALTER TABLE `tai_khoan` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-18 16:11:05
+-- Dump completed on 2022-05-05 15:48:58

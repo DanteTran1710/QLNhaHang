@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -75,7 +76,13 @@ public class KhachHang implements Serializable {
     private TaiKhoan taiKhoan;
     private String avatar;
     @Transient
-    private  MultipartFile file;
+    private MultipartFile file;
+    @OneToMany(
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.REMOVE,
+            orphanRemoval = true,
+            mappedBy = "idKhachHang")
+    private Collection<HoaDon> hoaDons;
 
     public KhachHang() {
     }
@@ -201,5 +208,19 @@ public class KhachHang implements Serializable {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
-    
+
+    /**
+     * @return the hoaDons
+     */
+    public Collection<HoaDon> getHoaDons() {
+        return hoaDons;
+    }
+
+    /**
+     * @param hoaDons the hoaDons to set
+     */
+    public void setHoaDons(Collection<HoaDon> hoaDons) {
+        this.hoaDons = hoaDons;
+    }
+
 }

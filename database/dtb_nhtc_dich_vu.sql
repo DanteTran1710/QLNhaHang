@@ -25,8 +25,11 @@ DROP TABLE IF EXISTS `dich_vu`;
 CREATE TABLE `dich_vu` (
   `idDichVu` int NOT NULL AUTO_INCREMENT,
   `tenDichVu` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `bangGia` decimal(10,0) NOT NULL,
+  `anhDV` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `ghiChu` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idDichVu`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +38,7 @@ CREATE TABLE `dich_vu` (
 
 LOCK TABLES `dich_vu` WRITE;
 /*!40000 ALTER TABLE `dich_vu` DISABLE KEYS */;
-INSERT INTO `dich_vu` VALUES (1,'Thuê MC'),(2,'Thuê dàn nhạc'),(3,'Dịch vụ hoa cưới'),(4,'Dịch vụ trang trí'),(5,'ssdsdsds'),(6,'Dá»ch vá»¥ hÃ¡t ÄÃ¡m ma thuÃª');
+INSERT INTO `dich_vu` VALUES (1,'Thuê MC ',1000000,'https://res.cloudinary.com/dguzlcoru/image/upload/v1651210560/v8vv0iczykiirhm8akdw.jpg',NULL),(2,'Thuê dàn nhạc',0,'',NULL),(3,'Dịch vụ hoa cưới',0,'',NULL),(18,'Thuê MC Trấn Thành',1000000,'https://res.cloudinary.com/dguzlcoru/image/upload/v1651208474/zutfaceoj91obfbzijhd.jpg','dfdfdf'),(19,'Thuê MC Trấn Thành',1000000,'https://res.cloudinary.com/dguzlcoru/image/upload/v1651208730/e0hs7yljwdxr8nog53wo.jpg','Cần thuê trên 24 tiếng'),(20,'Dịch vụ hoa cưới',1000000,'https://res.cloudinary.com/dguzlcoru/image/upload/v1651208955/w7svz3kl8zixcpkkugj7.jpg','Cần thuê trên 24 tiếng');
 /*!40000 ALTER TABLE `dich_vu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-18 16:11:05
+-- Dump completed on 2022-05-05 15:48:54
