@@ -6,17 +6,23 @@
 package com.nhtc.controllers;
 
 import com.nhtc.pojos.DichVu;
+import com.nhtc.pojos.HoaDon;
+import com.nhtc.pojos.KhachHang;
 import com.nhtc.pojos.MonAn;
 import com.nhtc.pojos.SanhTiec;
+import com.nhtc.pojos.TaiKhoan;
 import com.nhtc.service.DichVuService;
 import com.nhtc.service.SanhTiecService;
 import com.nhtc.service.HoaDonService;
+import com.nhtc.service.KhachHangService;
 import com.nhtc.service.MonAnService;
+import com.nhtc.service.TaiKhoanService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -50,6 +56,12 @@ public class ApiController {
     
     @Autowired
     private DichVuService dichVuService1;
+    
+    @Autowired 
+    private TaiKhoanService taiKhoanService;
+    
+    @Autowired
+    private KhachHangService khachHangService;
 
     @DeleteMapping("/api/delete-dichvu/{id}")
     public void deleteDivhVu(@PathVariable(value = "id") int reId, HttpSession session) {
@@ -182,13 +194,49 @@ public class ApiController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     
-        //GetListMonAn
+    //GetListMonAn
     @GetMapping(path = "/api/getListDichVu", produces = {
         MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<List<DichVu>> getListDichVu(){
         try {
             List<DichVu> dv = this.dichVuService.getListDichVu();
             return new ResponseEntity<>(dv, HttpStatus.OK);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    
+    //GetTaiKhoanByUserName
+    @GetMapping(path = "/api/getTaiKhoan/{username}", produces = {
+        MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<TaiKhoan>  getTaiKhoanByUsername(@PathVariable(value = "username") String username) {
+        try {
+            TaiKhoan t = this.taiKhoanService.getUserByUsername(username);
+            return new ResponseEntity<>(t, HttpStatus.OK);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    
+    //AddHoaDon
+    @PostMapping(path = "/api/addHoaDon", produces = {
+        MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<HoaDon> addHoaDon(@Valid @RequestBody HoaDon hoaDon){
+        if(this.hoaDonService.addOrUpdate(hoaDon) == true){
+            return new ResponseEntity<>(hoaDon, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    
+    //GetKhachHangByIDTaiKhoan
+    @GetMapping(path = "/api/getKhachHang/{idTaiKhoan}", produces = {
+        MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<KhachHang>  getKhachHangByIDTaiKhoan(@PathVariable(value = "idTaiKhoan") int idTaiKhoan) {
+        try {
+            KhachHang kh = this.khachHangService.getKhachHangByIDTaiKhoan(idTaiKhoan);
+            return new ResponseEntity<>(kh, HttpStatus.OK);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

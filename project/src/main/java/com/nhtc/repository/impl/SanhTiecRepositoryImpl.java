@@ -100,6 +100,25 @@ public class SanhTiecRepositoryImpl implements SanhTiecRepository {
         } catch (HibernateException ex) {
             System.err.println("MESSAGE HERE = " + ex.getMessage());
         }
-        return false;    }
-
+        return false;    
+    }
+    
+    @Override
+    public List<Object[]> getTopSanhTiecs(int num) {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = builder.createQuery(Object[].class);
+        // Lấy các sảnh tiệc
+        Root root = query.from(SanhTiec.class);
+        query = query.multiselect(root.get("tenSanhTiec"),root.get("anhSanhTiec"),
+                builder.count(root.get("tenSanhTiec")));
+        query = query.groupBy(root.get("tenSanhTiec"));
+        query = query.orderBy(builder.desc(builder.count(root.get("tenSanhTiec"))));
+        
+        Query qs = s.createQuery(query);
+        qs.setMaxResults(num);
+        
+        return qs.getResultList();
+    }
+    
 }

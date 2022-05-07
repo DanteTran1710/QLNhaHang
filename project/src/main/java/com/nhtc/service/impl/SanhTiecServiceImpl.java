@@ -64,5 +64,9 @@ public class SanhTiecServiceImpl implements SanhTiecService{
     public boolean delete(SanhTiec r) {
         return this.sanhTiecRepository.delete(r);
     }
-
+    
+    @Override
+    public List<Object[]> getTopSanhTiecs(int num) {
+        return this.sanhTiecRepository.getTopSanhTiecs(num);
+    }
 }

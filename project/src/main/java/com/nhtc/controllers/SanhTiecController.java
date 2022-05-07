@@ -5,9 +5,11 @@
  */
 package com.nhtc.controllers;
 
+import com.nhtc.pojos.HoaDon;
 import com.nhtc.pojos.LoaiSanh;
 import com.nhtc.pojos.SanhTiec;
 import com.nhtc.service.DichVuService;
+import com.nhtc.service.HoaDonService;
 import com.nhtc.service.LoaiSanhService;
 import com.nhtc.service.MonAnService;
 import com.nhtc.service.SanhTiecService;
@@ -37,6 +39,8 @@ public class SanhTiecController {
     private MonAnService monAnService;
     @Autowired
     private DichVuService dichVuService;
+    @Autowired
+    private HoaDonService hoaDonService;
 
     @GetMapping("/admin/newsanhtiec")
     public String list(Model model) {
@@ -98,7 +102,7 @@ public class SanhTiecController {
     
     @GetMapping(path="/sanhtiec")
     public String sanhTiec(Model model, 
-            @RequestParam(required = false) Map<String, String> params){
+        @RequestParam(required = false) Map<String, String> params){
         String kw = params.getOrDefault("kw", null);
         int page = Integer.parseInt(params.getOrDefault("page", "1"));
         
@@ -113,8 +117,22 @@ public class SanhTiecController {
         model.addAttribute("sanhTiecCounter", this.sanhTiecService.countSanhTiec());
         model.addAttribute("listMonAn", this.monAnService.getListMonAn());
         model.addAttribute("listDichVu", this.dichVuService.getListDichVu());
+        model.addAttribute("hoadon", new HoaDon());
         
         return "sanhtiec";
     }
     
+    @PostMapping(path="/sanhtiec")
+    public String sanhTiec(Model model,
+            @ModelAttribute(value = "hoadon") HoaDon hoadon){
+            String errorMessage;
+
+        if (this.hoaDonService.addOrUpdate(hoadon) == true) {
+            return "redirect:/sanhtiec";
+        } else {
+            errorMessage = "Hệ thống hiện đang lỗi! Vui lòng thử lại sau";
+        }
+        model.addAttribute("errMsg", errorMessage);
+        return "sanhtiec";
+    }
 }

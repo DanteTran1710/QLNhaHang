@@ -76,6 +76,7 @@ public class HomeController {
         }
         
         model.addAttribute("monAnCounter", this.monAnService.countMonAn());
+        model.addAttribute("sanhTiecTop", this.sanhTiecService.getTopSanhTiecs(2));
         
         
         return "index";

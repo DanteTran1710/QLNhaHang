@@ -31,9 +31,20 @@
     <li class="nav-item">
         <a class="nav-link" href="<c:url value="/dattiec"/>">Đặt tiệc</a>
     </li>
-     <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/login"/>">Đăng nhập</a>
-    </li>
+    <c:if test = "${pageContext.request.userPrincipal.name==null}">
+        <li class="nav-item">
+            <a class="nav-link" href="<c:url value="/login"/>">Đăng nhập</a>
+        </li>
+    </c:if>
+    <c:if test = "${pageContext.request.userPrincipal.name!=null}">
+        <li class="nav-item" style="border:2px solid lightcoral; border-radius: 20px;font-weight: bold">
+            <a class="nav-link" href="<c:url value="/"/>">Chào: ${pageContext.request.userPrincipal.name}</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="<c:url value="/logout"/>">Đăng xuất</a>
+        </li>
+    </c:if>
+         <input type="hidden" id="username"  value="${pageContext.request.userPrincipal.name}">
     <!-- Tìm kiếm -->
 <!--    <nav class="navbar navbar-expand-sm bg-dark navbar-dark" id="search">
         <form class="form-inline" action="<c:url value="/"/>">

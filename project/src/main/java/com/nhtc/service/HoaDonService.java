@@ -15,4 +15,6 @@ import java.util.List;
  */
 public interface HoaDonService {
     List<Object> getListHoaDonByElements(int option, String month, String year, Date fromDate, Date toDate);
+       
+    boolean addOrUpdate(HoaDon hoaDon);
 }

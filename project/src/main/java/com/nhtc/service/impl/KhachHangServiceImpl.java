@@ -54,4 +54,9 @@ public class KhachHangServiceImpl implements KhachHangService {
         return this.khachHangRepository.addKH(kh);
     }
 
+    @Override
+    public KhachHang getKhachHangByIDTaiKhoan(int idTaiKhoan) {
+        return this.khachHangRepository.getKhachHangByIDTaiKhoan(idTaiKhoan);
+    }
+
 }

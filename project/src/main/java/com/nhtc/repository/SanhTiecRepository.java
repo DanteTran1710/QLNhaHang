@@ -18,4 +18,5 @@ public interface SanhTiecRepository {
     long countSanhTiec();
     boolean addOrUpdate(SanhTiec sanhTiec);
     boolean delete(SanhTiec r);
+    List<Object[]> getTopSanhTiecs(int num);
 }

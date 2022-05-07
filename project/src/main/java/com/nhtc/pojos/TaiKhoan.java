@@ -5,6 +5,7 @@
  */
 package com.nhtc.pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -49,13 +50,15 @@ public class TaiKhoan implements Serializable {
     private String tenDangNhap;
     @Size(max = 100)
     @Column(name = "matKhau")
+    @JsonIgnore
     private String matKhau;
     @Size(max = 45)
     @Column(name = "loaiTaiKhoan")
     private String loaiTaiKhoan;
     @OneToMany(mappedBy = "taiKhoan")
+    @JsonIgnore
     private Collection<NhanVien> nhanVienCollection;
-    @OneToOne(mappedBy = "taiKhoan", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "taiKhoan", fetch = FetchType.EAGER)
     private KhachHang khachHang;
 
     public TaiKhoan() {

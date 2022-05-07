@@ -17,6 +17,7 @@ $(document).ready(function () {
           <button class="btn btn-success" type="submit">Tìm Kiếm</button>
         </form>
     </nav>`);
+    
 });
 
 function getSanhTiecByID(id){
@@ -47,6 +48,35 @@ function getMonAnByID(id){
                 .catch(err => err)
 }
 
+function GetTaiKhoanByUserName(){
+    let username = $('#username').val();
+    let fetchDate = {
+        method: 'GET',
+        headers: {
+                'Content-Type': 'application/json'
+            },
+        body: JSON.stringify()
+    }
+    return fetch(`http://localhost:8000/NhaHangTiecCuoi/api/getTaiKhoan/` + username, fetchDate)
+                .then(res => res.json())
+                .then(data => data)
+                .catch(err => err)
+}
+
+function getKhachHangByIDTaiKhoan(id){
+    let fetchDate = {
+        method: 'GET',
+        headers: {
+                'Content-Type': 'application/json'
+            },
+        body: JSON.stringify()
+    }
+    return fetch(`http://localhost:8000/NhaHangTiecCuoi/api/getKhachHang/` + id, fetchDate)
+                .then(res => res.json())
+                .then(data => data)
+                .catch(err => err)
+}
+
 function getDichVuByID(id){
     let fetchDate = {
         method: 'GET',
@@ -56,9 +86,29 @@ function getDichVuByID(id){
         body: JSON.stringify()
     }
     return fetch(`http://localhost:8000/NhaHangTiecCuoi/api/getDichVu/` + id, fetchDate)
-                .then(res => res.json())
-                .then(data => data)
+                .then(res => js)
+                .then(text => console.log(text))
                 .catch(err => err)
+}
+
+function addHoaDon(idKhachHang, tong) {
+    let fecthDate = {
+        method: 'POST',
+        body: JSON.stringify({
+            "idKhachHang": idKhachHang,
+            "tongTien": tong
+        }),
+        mode: 'no-cors'
+    }
+    return fetch("http://localhost:8000/NhaHangTiecCuoi/api/addHoaDon", fecthDate)
+            .then(res => {
+                if (res.status == 200) {
+                    console.log("oke");
+                } else
+                    alert("Error!!");
+            })
+            .then(data => data)
+            .catch(err => console.log(err))
 }
 
 function getSanhTiec(id){
@@ -86,4 +136,18 @@ function isCheckedDichVu(e){
             $('#tongTien').text("Tổng tiền: " + tongTien);
         });
     }
+}
+
+function datDon(){
+    GetTaiKhoanByUserName().then(resTK=>{
+        let idTaiKhoan = resTK.idTaiKhoan;
+        getKhachHangByIDTaiKhoan(idTaiKhoan).then(resKH=>{
+            let idKhachHang = resKH.idKhachHang;
+            console.log(idKhachHang);
+            
+            let total = tongTien;
+            console.log(tongTien)
+            addHoaDon(idKhachHang, total);
+        });
+    });
 }

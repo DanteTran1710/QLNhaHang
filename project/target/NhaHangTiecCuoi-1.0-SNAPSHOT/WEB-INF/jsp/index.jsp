@@ -22,6 +22,31 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+<!--============================TOP SANH TIEC===================================-->
+<hr/>
+<div class="row">
+    <c:forEach var="top" items="${sanhTiecTop}">
+        <div class="col-md-3 col-xs-12" style="padding: 10px">
+            <div class="card" >     
+                <c:choose>
+                    <c:when test="${top[1] != null && top[1].startsWith('https') == true}">
+                        <img class="img-card-top img-fluid" src="${top[1]}" alt="Card image" style="height: 400px"></img>
+                    </c:when>
+                    <c:when test="${top[1] == null || top[1].startsWith('https') == false}">
+                        <img class="img-card-top img-fluid" src="<c:url value="images/logo.jpg"/>" alt="Card image" style="height: 400px"></img>
+                    </c:when>
+                </c:choose>
 
+                <div class="card-body">
+                  <h4 class="card-title">${top[0]}</h4>
+                  <h6>Số lượng: ${top[2]}</h6>
+                  <br/>
+                  <a href="#" class="btn btn-primary">Đặt tiệc</a>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+</div>
+    
 
 <script src="<c:url value="/js/home.js" />"></script>

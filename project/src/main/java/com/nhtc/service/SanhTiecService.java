@@ -23,5 +23,7 @@ public interface SanhTiecService {
     boolean addOrUpdate(SanhTiec idSanhTiec);
 
     boolean delete(SanhTiec r);
+    
+    List<Object[]> getTopSanhTiecs(int num);
 
 }

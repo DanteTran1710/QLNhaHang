@@ -6,9 +6,16 @@
 package com.nhtc.repository.impl;
 
 import com.nhtc.pojos.KhachHang;
+import com.nhtc.pojos.TaiKhoan;
 import com.nhtc.repository.KhachHangRepository;
 import java.util.List;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import org.eclipse.persistence.annotations.QueryRedirectors;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
@@ -36,6 +43,20 @@ public class KhachHangRepositoryImpl implements KhachHangRepository{
         }
         
         return false;      }
+
+    @Override
+    public KhachHang getKhachHangByIDTaiKhoan(int idTaiKhoan) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<KhachHang> query = builder.createQuery(KhachHang.class);
+        Root root = query.from(KhachHang.class);
+        //query = query.select(root);
+        Predicate p = builder.equal(root.get("taiKhoan"), idTaiKhoan);
+
+        query = query.where(p);
+        KhachHang kh = session.createQuery(query).uniqueResult();     
+        return kh;   
+    }
     
     
 }

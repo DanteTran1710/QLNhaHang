@@ -47,6 +47,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class KhachHang implements Serializable {
 
     @OneToMany(mappedBy = "idKhachHang")
+    @JsonIgnore
     private Collection<BaoCao> baoCaoCollection;
 
     private static final long serialVersionUID = 1L;
@@ -82,6 +83,7 @@ public class KhachHang implements Serializable {
             cascade = CascadeType.REMOVE,
             orphanRemoval = true,
             mappedBy = "idKhachHang")
+    @JsonIgnore
     private Collection<HoaDon> hoaDons;
 
     public KhachHang() {

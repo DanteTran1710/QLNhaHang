@@ -46,7 +46,8 @@ public class TaiKhoanRepositoryImpl implements TaiKhoanRepository{
             System.out.println("Your username is null");
 
         TaiKhoan user = session.createQuery(query).uniqueResult();
-        return user;    }
+        return user;    
+    }
 
     @Override
     public boolean addUser(TaiKhoan user) {

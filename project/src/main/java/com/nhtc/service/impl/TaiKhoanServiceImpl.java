@@ -5,7 +5,9 @@
  */
 package com.nhtc.service.impl;
 
+import com.nhtc.pojos.KhachHang;
 import com.nhtc.pojos.TaiKhoan;
+import com.nhtc.repository.KhachHangRepository;
 import com.nhtc.repository.TaiKhoanRepository;
 import com.nhtc.service.TaiKhoanService;
 import java.util.HashSet;
@@ -28,6 +30,8 @@ public class TaiKhoanServiceImpl implements TaiKhoanService{
     private TaiKhoanRepository taiKhoanRepository;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    private KhachHangRepository khachHangRepository;
 
     @Override
     public TaiKhoan getUserByUsername(String username) {
@@ -39,6 +43,11 @@ public class TaiKhoanServiceImpl implements TaiKhoanService{
         String password = user.getMatKhau();
         user.setMatKhau(this.passwordEncoder.encode(password));
         user.setLoaiTaiKhoan("người dùng");
+        
+        // Khi thêm tài khoản sẽ thêm thông tin người dùng ở dạng null
+        KhachHang kh = new KhachHang();
+        kh.setTaiKhoan(user);
+        this.khachHangRepository.addKH(kh);
         
         return this.taiKhoanRepository.addUser(user);
     }

@@ -72,4 +72,17 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         return q.getResultList();
     }
 
+    @Override
+    public boolean addOrUpdate(HoaDon hoaDon) {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        try {
+            s.saveOrUpdate(hoaDon);
+            return true;
+        } catch (Exception e) {
+            System.err.println("== THÊM HÓA ĐƠN THẤT BẠI ==" + e.getMessage());
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }
