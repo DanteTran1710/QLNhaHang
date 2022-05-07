@@ -63,4 +63,9 @@ public class DichVuServiceImpl implements DichVuService {
         return this.dichVuRepository.delete(dichvu);
     }
 
+    @Override
+    public List<DichVu> getListDichVu() {
+        return this.dichVuRepository.getListDichVu();
+    }
+
 }

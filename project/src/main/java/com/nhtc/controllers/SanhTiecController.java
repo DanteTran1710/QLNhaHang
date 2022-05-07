@@ -7,7 +7,9 @@ package com.nhtc.controllers;
 
 import com.nhtc.pojos.LoaiSanh;
 import com.nhtc.pojos.SanhTiec;
+import com.nhtc.service.DichVuService;
 import com.nhtc.service.LoaiSanhService;
+import com.nhtc.service.MonAnService;
 import com.nhtc.service.SanhTiecService;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,10 @@ public class SanhTiecController {
     private SanhTiecService sanhTiecService;
     @Autowired
     private LoaiSanhService loaiSanhService;
+    @Autowired
+    private MonAnService monAnService;
+    @Autowired
+    private DichVuService dichVuService;
 
     @GetMapping("/admin/newsanhtiec")
     public String list(Model model) {
@@ -105,6 +111,9 @@ public class SanhTiecController {
         }
         
         model.addAttribute("sanhTiecCounter", this.sanhTiecService.countSanhTiec());
+        model.addAttribute("listMonAn", this.monAnService.getListMonAn());
+        model.addAttribute("listDichVu", this.dichVuService.getListDichVu());
+        
         return "sanhtiec";
     }
     

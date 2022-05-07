@@ -18,4 +18,5 @@ public interface DichVuService {
     long countDichVu();
     boolean addOrUpdate(DichVu sanhTiec, int id);
     boolean delete(DichVu r);
+    List<DichVu> getListDichVu();
 }

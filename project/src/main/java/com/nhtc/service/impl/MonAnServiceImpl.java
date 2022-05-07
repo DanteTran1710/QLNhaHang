@@ -56,5 +56,10 @@ public class MonAnServiceImpl implements MonAnService{
     public MonAn getMonAnById(int idMonAn) {
         return this.monAnRepository.getMonAnById(idMonAn);
     }
+
+    @Override
+    public List<MonAn> getListMonAn() {
+        return this.monAnRepository.getListMonAn();
+    }
     
 }

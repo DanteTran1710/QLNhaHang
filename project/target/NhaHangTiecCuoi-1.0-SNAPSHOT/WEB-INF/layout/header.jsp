@@ -17,7 +17,7 @@
     </li>
     <!-- Dropdown Dịch Vụ -->
     <li class="nav-item ">
-        <a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown">Dịch vụ</a>
+        <a class="nav-link" href="<c:url value="/dichvu"/>">Dịch vụ</a>
     </li>
     <!-- Dropdown Phản hồi -->
     <li class="nav-item">

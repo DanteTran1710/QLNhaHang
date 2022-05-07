@@ -6,10 +6,12 @@
 package com.nhtc.controllers;
 
 import com.nhtc.pojos.DichVu;
+import com.nhtc.pojos.MonAn;
 import com.nhtc.pojos.SanhTiec;
 import com.nhtc.service.DichVuService;
 import com.nhtc.service.SanhTiecService;
 import com.nhtc.service.HoaDonService;
+import com.nhtc.service.MonAnService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -17,9 +19,11 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,6 +44,12 @@ public class ApiController {
 
     @Autowired
     private HoaDonService hoaDonService;
+    
+    @Autowired
+    private MonAnService monAnService;
+    
+    @Autowired
+    private DichVuService dichVuService1;
 
     @DeleteMapping("/api/delete-dichvu/{id}")
     public void deleteDivhVu(@PathVariable(value = "id") int reId, HttpSession session) {
@@ -118,6 +128,70 @@ public class ApiController {
             ex.printStackTrace();
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
+    }
+    
+    //GetSanhTiec
+    @GetMapping(path = "/api/getSanhTiec/{idSanhTiec}", produces = {
+        MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<SanhTiec>  getSanhTiecById(@PathVariable(value = "idSanhTiec") int idSanhTiec) {
+        try {
+            SanhTiec st = this.sanhTiecService.getSanhTiecById(idSanhTiec);
+            return new ResponseEntity<>(st, HttpStatus.OK);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    
+    //GetMonAn
+    @GetMapping(path = "/api/getMonAn/{idMonAn}", produces = {
+        MediaType.APPLICATION_JSON_VALUE})
+     public ResponseEntity<MonAn>  getMonAnById(@PathVariable(value = "idMonAn") int idMonAn) {
+        try {
+            MonAn m = this.monAnService.getMonAnById(idMonAn);
+            return new ResponseEntity<>(m, HttpStatus.OK);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+     
+    //GetDichVu
+    @GetMapping(path = "/api/getDichVu/{idDichVu}", produces = {
+        MediaType.APPLICATION_JSON_VALUE})
+     public ResponseEntity<DichVu>  getDichVuById(@PathVariable(value = "idDichVu") int idDichVu) {
+        try {
+            DichVu d = this.dichVuService.getDichVuById(idDichVu);
+            return new ResponseEntity<>(d, HttpStatus.OK);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+     
+    //GetListMonAn
+    @GetMapping(path = "/api/getListMonAn", produces = {
+        MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<List<MonAn>> getListMonAn(){
+        try {
+            List<MonAn> m = this.monAnService.getListMonAn();
+            return new ResponseEntity<>(m, HttpStatus.OK);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    
+        //GetListMonAn
+    @GetMapping(path = "/api/getListDichVu", produces = {
+        MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<List<DichVu>> getListDichVu(){
+        try {
+            List<DichVu> dv = this.dichVuService.getListDichVu();
+            return new ResponseEntity<>(dv, HttpStatus.OK);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

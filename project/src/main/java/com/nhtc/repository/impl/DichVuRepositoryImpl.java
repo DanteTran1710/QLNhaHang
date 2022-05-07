@@ -112,4 +112,16 @@ public class DichVuRepositoryImpl implements DichVuRepository {
         }
         return false;    }
 
+    @Override
+    public List<DichVu> getListDichVu() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<DichVu> q = builder.createQuery(DichVu.class);
+        Root root = q.from(DichVu.class);
+        q = q.select(root);
+        //Truy vấn tên lớp đối tượng
+        Query query = session.createQuery(q);
+        return query.getResultList();
+    }
+
 }

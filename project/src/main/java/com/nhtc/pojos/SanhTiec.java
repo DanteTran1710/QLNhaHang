@@ -5,6 +5,7 @@
  */
 package com.nhtc.pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -51,6 +52,7 @@ public class SanhTiec implements Serializable {
     @ManyToOne(          
             optional = true,
             fetch = FetchType.EAGER)
+    @JsonIgnore
     private LoaiSanh maLoaiSanh;
     
     @Transient

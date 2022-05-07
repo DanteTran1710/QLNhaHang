@@ -5,6 +5,7 @@
  */
 package com.nhtc.pojos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -55,9 +56,11 @@ public class MonAn implements Serializable {
     private long giaMonAn;
     @Size(max = 100)
     @Column(name = "anhMonAn")
+    @JsonIgnore
     private String anhMonAn;
     @JoinColumn(name = "maLoaiMon", referencedColumnName = "idLoaiMon")
     @ManyToOne(optional = false)
+    @JsonIgnore
     private LoaiMon maLoaiMon;
     
      @Transient

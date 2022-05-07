@@ -84,4 +84,19 @@ public class DichVuController {
 
         return "editDVC";
     }
+    
+    @GetMapping(path="/dichvu")
+    public String dichVu(Model model, 
+            @RequestParam(required = false) Map<String, String> params){
+        String kw = params.getOrDefault("kw", null);
+        int page = Integer.parseInt(params.getOrDefault("page", "1"));
+        
+        String idDichVu = params.get("idDichVu");
+        if (idDichVu == null) {
+            model.addAttribute("dichvu", this.dichVuService.getDichVus(kw, page));
+        }
+        
+        model.addAttribute("dichVuCounter", this.dichVuService.countDichVu());
+        return "dichvu";
+    }
 }

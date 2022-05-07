@@ -80,4 +80,16 @@ public class MonAnRepositoryImpl implements MonAnRepository{
     public MonAn getMonAnById(int idMonAn) {
         Session s = sessionFactory.getObject().getCurrentSession();
         return s.get(MonAn.class, idMonAn);    }
+
+    @Override
+    public List<MonAn> getListMonAn() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<MonAn> q = builder.createQuery(MonAn.class);
+        Root root = q.from(MonAn.class);
+        q = q.select(root);
+        //Truy vấn tên lớp đối tượng
+        Query query = session.createQuery(q);
+        return query.getResultList();
+    }
 }

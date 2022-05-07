@@ -17,4 +17,5 @@ public interface MonAnRepository {
     MonAn getMonAnById(int idMonAn);
     long countMonAn();
     boolean addOrUpdate(MonAn monAn);
+    List<MonAn> getListMonAn();
 }
